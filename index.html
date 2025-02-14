@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="altura" placeholder="altura">
+    <input type="number" id="comprimento" placeholder="comprimento">
+    <label for="opcoes">Escolha a Quantidade</label>
+    <select name="opcoes" id="opcoes" style="width: 20px;">
+        <option value="" disabled selected></option>
+        <option value="0.00463">1Mil</option>
+        <option value="0.00319">2Mil</option>
+        <option value="0.00222">3Mil</option>
+    </select>
+    <button onclick="Enviar()">Enviar</button>
+
+    <p>Valor do orçamento: <span id="resultado"></span> </p>
+
+    <script>
+
+        function Enviar() {
+            let altura = document.getElementById("altura").value;
+            let comprimento = document.getElementById("comprimento").value;
+            let opcoes = document.getElementById("opcoes").value;
+
+            let conta = Number(altura) * Number(comprimento) * Number(opcoes);
+
+            let resultado = document.getElementById("resultado").innerHTML = eval(conta);
+        }
+
+    </script>
+</html>
