@@ -13,8 +13,8 @@
     <main>
         <article class="container-conta">
             <section class="input-conta">
-
                 <div class="valores">
+                    <h1>Calculo de orçamento</h1>
                     <input
                     type="number"
                     id="altura"
@@ -33,7 +33,7 @@
                         Escolha a Quantidade: 
                     </label>
     
-                    <select name="opcoes" id="opcoes" style="width: 20%;">
+                    <select name="opcoes" id="opcoes" style="width: 20%; height: 25px;">
                         <option value="" disabled selected>
                         </option>
     
@@ -48,29 +48,71 @@
                         <option value="0.222">
                             3MIL
                         </option>
-                </div>
 
+                        <option value="0.180">
+                            5MIL
+                        </option>
+    
+                        <option value="0.176">
+                            10MIL
+                        </option>
+    
+                        <option value="0.165">
+                            20MIL
+                        </option>
+                        
+                        <option value="0.164">
+                            30MIL
+                        </option>
+    
+                        <option value="0.163">
+                            40MIL
+                        </option>
+    
+                        <option value="0.162">
+                            50MIL
+                        </option>
+                </div>
                 </select>
 
-                <div class="enviar">
-                    <button onclick="Enviar()">Enviar</button>
+                <div class="container-btn">
+                    <button class="btn" onclick="Enviar()">Enviar</button>
+                    <button class="btn" id="btnReiniciar" onclick="Reiniciar()">Reiniciar</button>
                 </div>
 
-                <p>Valor do orçamento: <span id="resultado"></span> </p>
+                <p class="resultado">Valor do orçamento: <span id="resultado"></span> </p>
             </section>
         </article>
     </main>
 
     <script>
-
+        // Aqui e o codigo que faz o btn(botao) de enviar funcionar.
         function Enviar() {
+            // Pegando o id dos objetos e passando para variaveis "let".
             let altura = document.getElementById("altura").value;
             let comprimento = document.getElementById("comprimento").value;
             let opcoes = document.getElementById("opcoes").value;
-
+            // Parte do codigo responsavel pela conta.
             let conta = Number(altura) * Number(comprimento) * Number(opcoes);
+            
+            /* Se o valor da conta for igual ou maior que 0 entao ele escrevera
+            "Preencha todos os campos", se nao, ele mostrara o resultado da conta
+            */
+            if ( conta <= 0) {
+                resultado = document.getElementById("resultado").innerHTML = "Preencha todos os campos";
+            }else {
+                let resultado = document.getElementById("resultado").innerHTML = eval(conta.toFixed(3));
+            }
+            event.preventDefault();
+        }
 
-            let resultado = document.getElementById("resultado").innerHTML = eval(conta.toFixed(3));
+        // Codigo para recarregar a tela
+        function Reiniciar() {
+            const btnReiniciar = document.getElementById("btnReiniciar");
+
+            btnReiniciar.addEventListener('click', () => {
+                window.location.reload()
+            });
         }
 
     </script>
